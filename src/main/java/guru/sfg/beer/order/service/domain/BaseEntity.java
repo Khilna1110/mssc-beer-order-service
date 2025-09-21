@@ -23,6 +23,7 @@ import org.hibernate.annotations.*;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.UUID;
 
 /**
@@ -46,7 +47,8 @@ public class BaseEntity {
     @GeneratedValue(generator = "UUID")
     @UuidGenerator
     //@Type(type="org.hibernate.type.UUIDCharType")
-    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false )
+    @JdbcTypeCode(Types.VARCHAR)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false )
     private UUID id;
 
     @Version
